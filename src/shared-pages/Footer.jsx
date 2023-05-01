@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className='container mx-auto '>
-            <footer className="bg-[#292726] text-gray-300 py-8">
+        <div className='bg-[#292726]  '>
+            <footer className="container mx-auto text-gray-300 py-8">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between">
     <div className="w-full lg:w-1/3 mb-4 lg:mb-0 lg:pr-4">
-      <h2 className="text-2xl font-bold mb-2">About Us</h2>
+      <h2 className="text-2xl font-bold mb-2 ">About Us</h2>
       <p className="text-sm">We are a community of chefs dedicated to sharing our passion for cooking and providing delicious recipes for everyone to enjoy.</p>
     </div>
     <div className="w-full lg:w-1/3 mb-4 lg:mb-0 ">
