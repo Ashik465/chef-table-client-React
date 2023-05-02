@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
+    GithubAuthProvider,
   GoogleAuthProvider,
   getAuth,
   onAuthStateChanged,
@@ -11,10 +12,22 @@ import app from "../firebase/firebase.config";
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider()
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loader, setLoader] = useState(true);
+
+
+//git-hub-log-in 
+
+const githubLogIn =()=>{
+
+    setLoader(true)
+    return signInWithPopup(auth,githubProvider)
+}
+
+
 
   // google log in
   const googleLogIn = () => {
@@ -41,7 +54,7 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authInfo = { googleLogIn, logout,user };
+  const authInfo = { googleLogIn, logout,user,githubLogIn };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

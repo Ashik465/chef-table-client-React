@@ -6,10 +6,32 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
 
- const {googleLogIn} = useContext(AuthContext)
+ const {googleLogIn,githubLogIn} = useContext(AuthContext)
  const navigate = useNavigate()
 
-    //google log in 
+   
+ //git-hub log in 
+
+ const handleGithubLogin =()=>{
+    githubLogIn()
+    .then(result =>{
+        const loggedUser =result.user
+        console.log(loggedUser)
+        navigate('/')
+        
+   })
+ 
+   .catch(error =>{
+     console.log(error)
+   })
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ //google log in 
    const handleGoogleLogin =()=>{
 
     googleLogIn()
@@ -81,7 +103,7 @@ const Login = () => {
                     
                     <img className="h-10 w-10" src={google} alt="" />
                   </span>
-                  <span className=" cursor-pointer">
+                  <span onClick={handleGithubLogin} className=" cursor-pointer">
                     
                     <img className="h-12 w-12" src={github} alt="" />
                   </span>
