@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 const Header = () => {
 
@@ -43,9 +45,10 @@ const handleLogout =()=>{
    {user && <Link onClick={handleLogout} to="/login" className="btn btn-main ml-4">Logout</Link>  }
 
    {user? <label  className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img src={user?.photoURL
-} />
+        <div  className="w-10 rounded-full">
+         <a  id="my-anchor-element"><img  src={user?.photoURL
+} /></a> <Tooltip anchorSelect="#my-anchor-element"
+content={user.displayName}></Tooltip>
         </div>
       </label> : <Link to="/login" className="btn btn-main">Login</Link>}
 
