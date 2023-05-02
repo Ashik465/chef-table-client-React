@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import google from "../../assets/google-logo-9808.png";
 import github from "../../assets/github.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+
+ const {googleLogIn} = useContext(AuthContext)
+ const navigate = useNavigate()
+
+    //google log in 
+   const handleGoogleLogin =()=>{
+
+    googleLogIn()
+    .then(result =>{
+        const loggedUser =result.user
+        console.log(loggedUser)
+        navigate('/')
+        
+   })
+ 
+   .catch(error =>{
+     console.log(error)
+   })
+
+   }
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -55,7 +77,7 @@ const Login = () => {
                 </div>
 
                 <div className=" flex justify-center items-center gap-4">
-                  <span className="  cursor-pointer">
+                  <span onClick={handleGoogleLogin} className="  cursor-pointer">
                     
                     <img className="h-10 w-10" src={google} alt="" />
                   </span>
