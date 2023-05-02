@@ -28,7 +28,7 @@ const handleLogout =()=>{
       <li><NavLink to='/blog'>Blog</NavLink></li>
       </ul>
     </div>
-    <Link to ='/' className="btn btn-ghost normal-case text-3xl font-bold">Chef's Table</Link>
+    <Link to ='/' className="btn btn-ghost normal-case text-2xl font-bold sm:text-3xl ">Chef's Table</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 text-2xl">
@@ -39,8 +39,17 @@ const handleLogout =()=>{
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to="/login" className="btn btn-main">Login</Link>
+    
    {user && <Link onClick={handleLogout} to="/login" className="btn btn-main ml-4">Logout</Link>  }
+
+   {user? <label  className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img src={user?.photoURL
+} />
+        </div>
+      </label> : <Link to="/login" className="btn btn-main">Login</Link>}
+
+   
     
   </div>
 </div>
