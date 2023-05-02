@@ -1,52 +1,71 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import google from "../../assets/google-logo-9808.png";
 import github from "../../assets/github.png";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+  const { googleLogIn, githubLogIn,signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [error ,setError] =useState('')
 
- const {googleLogIn,githubLogIn} = useContext(AuthContext)
- const navigate = useNavigate()
+  const from = location.state?.from?.pathname || "/";
+  
+  //email log in 
 
-   
- //git-hub log in 
+ const  handleEmailLogin =(event)=>{
 
- const handleGithubLogin =()=>{
-    githubLogIn()
-    .then(result =>{
-        const loggedUser =result.user
-        console.log(loggedUser)
-        navigate('/')
-        
-   })
- 
-   .catch(error =>{
-     console.log(error)
-   })
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        form.reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
+
  }
- 
- 
- 
- 
- 
- 
- //google log in 
-   const handleGoogleLogin =()=>{
+  
+  
+  
+  
+  
+  //git-hub log in
 
+  const handleGithubLogin = () => {
+    githubLogIn()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate("/");
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  //google log in
+  const handleGoogleLogin = () => {
     googleLogIn()
-    .then(result =>{
-        const loggedUser =result.user
-        console.log(loggedUser)
-        navigate('/')
-        
-   })
- 
-   .catch(error =>{
-     console.log(error)
-   })
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate("/");
+      })
 
-   }
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -56,12 +75,14 @@ const Login = () => {
             <h1 className="text-5xl font-bold ">Login now!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleEmailLogin} className="card-body">
+            {error &&  <p className='mb-3 text-red-600'> {error}  </p>}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                name='email'
                   type="text"
                   placeholder="email"
                   className="input input-bordered"
@@ -72,6 +93,7 @@ const Login = () => {
                   <span className="label-text ">Password</span>
                 </label>
                 <input
+                name='password'
                   type="text"
                   placeholder="password"
                   className="input input-bordered"
@@ -99,12 +121,13 @@ const Login = () => {
                 </div>
 
                 <div className=" flex justify-center items-center gap-4">
-                  <span onClick={handleGoogleLogin} className="  cursor-pointer">
-                    
+                  <span
+                    onClick={handleGoogleLogin}
+                    className="  cursor-pointer"
+                  >
                     <img className="h-10 w-10" src={google} alt="" />
                   </span>
                   <span onClick={handleGithubLogin} className=" cursor-pointer">
-                    
                     <img className="h-12 w-12" src={github} alt="" />
                   </span>
                 </div>
