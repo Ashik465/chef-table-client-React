@@ -69,7 +69,7 @@ const Home = () => {
       <section className="container mx-auto my-40">
         <h1 className="text-5xl text-center font-bold mb-10 ">
           {" "}
-          Some popular food{" "}
+          Some popular American food{" "}
         </h1>
 
         {/* start */}
