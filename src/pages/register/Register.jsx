@@ -39,8 +39,7 @@ const Register = () => {
     .then((result) => {
        
         const loggedUser = result.user;
-        loggedUser.displayName = name;
-        loggedUser.photoURL= photoURL;
+        
         form.reset()
         navigate(from, { replace: true });
         console.log(loggedUser)
