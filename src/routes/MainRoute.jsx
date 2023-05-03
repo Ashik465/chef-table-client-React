@@ -9,6 +9,7 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import ChefRecipe from "../pages/chefRecipe/ChefRecipe";
 import ErrorPage from "../pages/errorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ import ErrorPage from "../pages/errorPage/ErrorPage";
         },
         {
           path: "/:id",
-          element:<ChefRecipe></ChefRecipe> ,
+          element:<PrivateRoute><ChefRecipe></ChefRecipe></PrivateRoute> ,
           loader:({params})=>fetch(`https://chef-server-ashik465.vercel.app/chefdata/${params.id}`)
         },
         {

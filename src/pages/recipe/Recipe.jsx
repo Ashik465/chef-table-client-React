@@ -34,11 +34,11 @@ const Recipe = ({ recipe }) => {
 
           <p> <span className=" font-bold">Cooking-Method:</span>  {cookingMethod}</p>
             
-            <p><Rating
+            <Rating
       style={{ maxWidth: 180 }}
       value={rating}
       readOnly
-    /></p>
+    />
             
           <div className="card-actions justify-end">
             <button onClick={handleToast} disabled={favorite}  className=" btn btn-main">Favorite <FaHeart></FaHeart></button>

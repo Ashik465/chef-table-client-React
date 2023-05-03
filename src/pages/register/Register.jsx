@@ -1,5 +1,5 @@
 import React, {  useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 
 
@@ -7,6 +7,9 @@ const Register = () => {
     const {createEmailUser}=useContext(AuthContext)
     const[error,setError] =useState('')
     const navigate = useNavigate();
+    const location =useLocation()
+
+    const from = location?.state?.pathname || '/'
 
    
     //email signup
@@ -39,7 +42,7 @@ const Register = () => {
         loggedUser.displayName = name;
         loggedUser.photoURL= photoURL;
         form.reset()
-        navigate('/')
+        navigate(from, { replace: true });
         console.log(loggedUser)
         
         

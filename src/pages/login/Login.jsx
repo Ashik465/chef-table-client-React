@@ -1,16 +1,19 @@
 import React, { useContext, useState } from "react";
 import google from "../../assets/google-logo-9808.png";
 import github from "../../assets/github.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
   const { googleLogIn, githubLogIn,signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error ,setError] =useState('')
+  const location =useLocation()
 
   const from = location.state?.from?.pathname || "/";
   
+
+  console.log(from)
   //email log in 
 
  const  handleEmailLogin =(event)=>{
@@ -45,7 +48,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate("/");
+        navigate(from, { replace: true });
       })
 
       .catch((error) => {
@@ -59,7 +62,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate("/");
+        navigate(from, { replace: true });
       })
 
       .catch((error) => {
@@ -135,7 +138,7 @@ const Login = () => {
 
               <p>
                 Don’t have an account yet?
-                <Link to="/register" className="link link-color">
+                <Link to="/register" state={location?.state?.from} className="link link-color">
                   Sign-Up
                 </Link>
               </p>
