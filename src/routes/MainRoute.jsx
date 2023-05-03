@@ -7,6 +7,7 @@ import Home from "../pages/home/Home";
 import Blog from "../pages/blog/Blog";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
+import ChefRecipe from "../pages/chefRecipe/ChefRecipe";
 
   const router = createBrowserRouter([
     {
@@ -17,6 +18,12 @@ import Register from "../pages/register/Register";
         {
           path: "/",
           element: <Home></Home>,
+          loader:()=>fetch('https://chef-server-ashik465.vercel.app/chefdata')
+        },
+        {
+          path: "/:id",
+          element:<ChefRecipe></ChefRecipe> ,
+          loader:({params})=>fetch(`https://chef-server-ashik465.vercel.app/chefdata/${params.id}`)
         },
         {
           path: "/blog",
