@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import LoadingSpinner from '../../loader/LoadingSpinner';
 import {  FaThumbsUp,FaUtensils} from "react-icons/fa";
+import Recipe from '../recipe/Recipe';
 
 const ChefRecipe = () => {
 
@@ -17,7 +18,7 @@ const ChefRecipe = () => {
     console.log(chefDetails.item)
 
 
-const{chefPicture,chefName,yearsOfExperience,numRecipes,numLikes,chefId,chefBio} =chefDetails.item
+const{chefPicture,chefName,yearsOfExperience,numRecipes,numLikes,chefBio} =chefDetails.item
 
     return (
         <>
@@ -40,6 +41,19 @@ const{chefPicture,chefName,yearsOfExperience,numRecipes,numLikes,chefId,chefBio}
     </div>
   </div>
 </div>
+
+
+
+   {/* recipe section  */}
+
+
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20   container mx-auto my-40'>
+
+   {chefDetails.item.recipes.map(recipe=><Recipe recipe={recipe}key={recipe.Id}></Recipe>)} 
+
+    </div>
+
+
 
 
 

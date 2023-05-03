@@ -8,12 +8,13 @@ import Blog from "../pages/blog/Blog";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import ChefRecipe from "../pages/chefRecipe/ChefRecipe";
+import ErrorPage from "../pages/errorPage/ErrorPage";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
-    //   errorElement: <ErrorPage />,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: "/",
