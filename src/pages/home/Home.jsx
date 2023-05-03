@@ -5,6 +5,9 @@ import LoadingSpinner from '../../loader/LoadingSpinner';
 import Chef from '../chef/Chef';
 import food1 from '../../assets/food1.jpg'
 import food2 from '../../assets/food2.jpg'
+import food3 from '../../assets/food3.jpg'
+import food4 from '../../assets/food4.jpg'
+import food5 from '../../assets/food 5.jpg'
 
 const Home = () => {
 
@@ -58,7 +61,37 @@ if(navigation.state ==='loading'){
 
 {/* start */}
 
-
+<div className="carousel w-full">
+  <div id="slide1" className="carousel-item relative w-full">
+    <img src={food3} className="w-full" />
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide4" className="btn btn-circle">❮</a> 
+      <a href="#slide2" className="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide2" className="carousel-item relative w-full">
+    <img src={food2} className="w-full" />
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide1" className="btn btn-circle">❮</a> 
+      <a href="#slide3" className="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide3" className="carousel-item relative w-full">
+    <img src={food1} className="w-full" />
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide2" className="btn btn-circle">❮</a> 
+      <a href="#slide4" className="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide4" className="carousel-item relative w-full">
+    <img src={food4} className="w-full" />
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide3" className="btn btn-circle">❮</a> 
+      <a href="#slide1" className="btn btn-circle">❯</a>
+    </div>
+  </div>
+ 
+</div>
 
 
 
