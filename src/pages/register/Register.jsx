@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { getAuth, updateProfile } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
     const {createEmailUser,setLoader}=useContext(AuthContext)
@@ -63,6 +63,9 @@ const auth =getAuth(app)
          setError(error.message) 
         
       });
+
+      toast.success('sign-up successful');
+
 
 
   }
@@ -134,7 +137,7 @@ const auth =getAuth(app)
                 <div className="form-control mt-6">
                   <button className="btn btn-main mb-3">Sign-Up</button>
                 </div>
-  
+                <Toaster />
                 
   
                 <p>
