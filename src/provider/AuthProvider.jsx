@@ -73,7 +73,7 @@ const githubLogIn =()=>{
     };
   }, []);
 
-  const authInfo = { googleLogIn, logout,user,githubLogIn,createEmailUser,loader,signIn };
+  const authInfo = { googleLogIn, logout,user,githubLogIn,createEmailUser,loader,signIn,setLoader };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

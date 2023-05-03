@@ -1,16 +1,18 @@
 import React, {  useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { getAuth, updateProfile } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
 
 
 const Register = () => {
-    const {createEmailUser}=useContext(AuthContext)
+    const {createEmailUser,setLoader}=useContext(AuthContext)
     const[error,setError] =useState('')
     const navigate = useNavigate();
     const location =useLocation()
 
     const from = location?.state?.pathname || '/'
-
+const auth =getAuth(app)
    
     //email signup
   const  handleEmailSignUp =(e)=>{
@@ -39,7 +41,17 @@ const Register = () => {
     .then((result) => {
        
         const loggedUser = result.user;
-        
+        updateProfile(auth.currentUser, {
+         
+         
+          displayName:name , photoURL: photoURL
+        }).then(() => {
+          
+          setLoader(true)
+        }).catch((error) => {
+          // An error occurred
+          // ...
+        });
         form.reset()
         navigate(from, { replace: true });
         console.log(loggedUser)
