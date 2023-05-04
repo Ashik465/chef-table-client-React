@@ -3,6 +3,7 @@ import google from "../../assets/google-logo-9808.png";
 import github from "../../assets/github.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
   const { googleLogIn, githubLogIn,signIn } = useContext(AuthContext);
@@ -13,7 +14,8 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   
 
-  console.log(from)
+  // console.log(from)
+  
   //email log in 
 
  const  handleEmailLogin =(event)=>{
@@ -28,12 +30,15 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         form.reset();
+        toast.success('Log-in successful');
         navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
         setError(error.message);
       });
+
+      
 
  }
   
@@ -48,12 +53,15 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        toast.success('Log-in successful');
         navigate(from, { replace: true });
       })
 
       .catch((error) => {
         console.log(error);
       });
+
+      
   };
 
   //google log in
@@ -62,12 +70,14 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        toast.success('Log-in successful');
         navigate(from, { replace: true });
       })
 
       .catch((error) => {
         console.log(error);
       });
+     
   };
 
   return (
@@ -109,6 +119,7 @@ const Login = () => {
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-main mb-3">Login</button>
+                <Toaster />
               </div>
 
               <div className=" flex  flex-col gap-2">

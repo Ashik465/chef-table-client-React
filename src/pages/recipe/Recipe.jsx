@@ -10,7 +10,7 @@ const Recipe = ({ recipe }) => {
   const[favorite,setFavorite]=useState(false)
 
     const handleToast = () => {
-        toast.success('Added to favorites');
+        toast('❤️ Added to favorites');
           
         setFavorite(true)
 

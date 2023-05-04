@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import banner from "../../assets/banner.jpg";
 import { useLoaderData, useNavigation } from "react-router-dom";
 import LoadingSpinner from "../../loader/LoadingSpinner";
@@ -8,10 +8,12 @@ import food2 from "../../assets/food2.jpg";
 import food3 from "../../assets/food3.jpg";
 import food4 from "../../assets/food4.jpg";
 import food5 from "../../assets/food 5.jpg";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Home = () => {
   const chefData = useLoaderData();
   const [chef, setChef] = useState(chefData);
+  const {loader} = useContext(AuthContext)
 
   // console.log(chef[0].chefs)
 
@@ -21,6 +23,10 @@ const Home = () => {
 
   if (navigation.state === "loading") {
     return <LoadingSpinner></LoadingSpinner>;
+  }
+
+     if(loader){
+    return <LoadingSpinner></LoadingSpinner>
   }
 
   return (

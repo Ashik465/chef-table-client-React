@@ -42,7 +42,7 @@ const handleLogout =()=>{
   </div>
   <div className="navbar-end">
     
-   {user && <Link onClick={handleLogout} to="/login" className="btn btn-main ml-4">Logout</Link>  }
+   {user && <Link onClick={handleLogout} to="/login" className="btn bg-[#DC143C] border-none text-white sm:text-xl font-bold hover:bg-[#FFC107] hover:text-black normal-case  ml-4">Logout</Link>  }
 
    {user? <label  className="btn btn-ghost btn-circle avatar">
         <div  className="w-10 rounded-full">
