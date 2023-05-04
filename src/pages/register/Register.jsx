@@ -24,10 +24,14 @@ const auth =getAuth(app)
     const photoURL = form.photoURL.value
 
     
-     if( email ==='' || password ==='') {
-        setError('email and password can not be empty')
+     if( email ==='' ) {
+        setError('email can not be empty')
         return 
-    } else if(password.length<6){
+    } else if( password ===''){
+        setError('password can not be empty')
+        return 
+    } 
+     else if (password.length<6){
         setError('password should be 6 character long')
         return 
     } 
