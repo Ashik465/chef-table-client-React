@@ -23,10 +23,10 @@ const Footer = () => {
     <div className="w-full lg:w-1/3">
       <h2 className="text-2xl font-bold mb-2">Follow Us</h2>
       <ul className="flex space-x-4 text-sm">
-        <li><Link href="#" className="hover:text-gray-500 text-3xl"><FaFacebook></FaFacebook></Link></li>
-        <li><Link href="#" className="hover:text-gray-500 text-3xl"><FaTwitter></FaTwitter></Link></li>
-        <li><Link href="#" className="hover:text-gray-500 text-3xl"><FaInstagram></FaInstagram></Link></li>
-        <li><Link href="#" className="hover:text-gray-500 text-3xl "><FaYoutube></FaYoutube></Link></li>
+        <li><Link  className="hover:text-gray-500 text-3xl"><FaFacebook></FaFacebook></Link></li>
+        <li><Link  className="hover:text-gray-500 text-3xl"><FaTwitter></FaTwitter></Link></li>
+        <li><Link  className="hover:text-gray-500 text-3xl"><FaInstagram></FaInstagram></Link></li>
+        <li><Link  className="hover:text-gray-500 text-3xl "><FaYoutube></FaYoutube></Link></li>
       </ul>
       
     </div>

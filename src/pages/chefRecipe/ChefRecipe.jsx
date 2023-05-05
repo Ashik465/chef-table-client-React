@@ -45,9 +45,18 @@ const{chefPicture,chefName,yearsOfExperience,numRecipes,numLikes,chefBio} =chefD
 
 
    {/* recipe section  */}
+     
+     <div className=' mx-auto container  '>
 
+     <h1 className="text-5xl text-center font-bold my-20 ">
+          {" "}
+          Recipes {" "}
+        </h1>
+     </div>
 
-    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20   container mx-auto my-40'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20   container mx-auto  p-5 sm:p-0 mb-20 '>
+
+    
 
    {chefDetails.item.recipes.map(recipe=><Recipe recipe={recipe}key={recipe.Id}></Recipe>)} 
 

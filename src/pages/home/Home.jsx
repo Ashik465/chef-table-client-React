@@ -63,7 +63,7 @@ const Home = () => {
           Meet Our Extraordinary chef{" "}
         </h1>
 
-        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-12">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-12 p-5 sm:p-0">
           {chef[0].chefs.map((chef) => (
             <Chef chef={chef} key={chef.chefId}></Chef>
           ))}
