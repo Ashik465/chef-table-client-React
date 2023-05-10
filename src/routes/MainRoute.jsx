@@ -20,7 +20,7 @@ import PrivateRoute from "./PrivateRoute";
         {
           path: "/",
           element: <Home></Home>,
-          loader:()=>fetch('https://chef-server-ashik465.vercel.app/chefdata')
+          // loader:()=>fetch('https://chef-server-ashik465.vercel.app/chefdata')
         },
         {
           path: "/:id",

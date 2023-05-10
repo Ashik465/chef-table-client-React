@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import banner from "../../assets/banner.jpg";
 import { useLoaderData, useNavigation } from "react-router-dom";
 import LoadingSpinner from "../../loader/LoadingSpinner";
@@ -11,11 +11,28 @@ import food5 from "../../assets/food 5.jpg";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Home = () => {
-  const chefData = useLoaderData();
-  const [chef, setChef] = useState(chefData);
-  const {loader} = useContext(AuthContext)
+  // const chefData = useLoaderData();
+  const [chef, setChef] = useState([]);
+  // const {loader} = useContext(AuthContext)
+  const [loader, setLoader] = useState(true);
 
+ 
   // console.log(chef[0].chefs)
+
+
+   //load data 
+
+   useEffect(()=>{
+    fetch("https://chef-server-ashik465.vercel.app/chefdata")
+    .then(res=>res.json())
+    .then(data=>{setChef(data)
+    
+    setLoader(false)})
+
+
+   },[])
+
+
 
   //loader
   const navigation = useNavigation();
@@ -64,7 +81,7 @@ const Home = () => {
         </h1>
 
         <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-12 p-5 sm:p-0">
-          {chef[0].chefs.map((chef) => (
+          {chef[0]?.chefs?.map((chef) => (
             <Chef chef={chef} key={chef.chefId}></Chef>
           ))}
         </div>
