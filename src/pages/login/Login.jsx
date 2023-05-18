@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import google from "../../assets/google-logo-9808.png";
+import google from "../../assets/google.png";
 import github from "../../assets/github.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
