@@ -6,7 +6,7 @@ import app from '../../firebase/firebase.config';
 import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
-    const {createEmailUser,setLoader}=useContext(AuthContext)
+    const {createEmailUser,setLoader,setUser}=useContext(AuthContext)
     const[error,setError] =useState('')
     const navigate = useNavigate();
     const location =useLocation()
@@ -51,9 +51,17 @@ const auth =getAuth(app)
           displayName:name , photoURL: photoURL
         }).then(() => {
           
-          setLoader(true)
+          // setLoader(true)
+
+          setUser(loggedUser => {
+            const updatedLoggedUser = {...loggedUser}
+            updatedLoggedUser.displayName = name ;
+            updatedLoggedUser.photoURL = photoURL;
+
+         return updatedLoggedUser 
+          })
         }).catch((error) => {
-          // An error occurred
+          // An error occurred 
           // ...
         });
         form.reset()
